@@ -1,0 +1,22 @@
+.row
+  .large-12.colums
+    h2 Add Restaurant
+
+form ng-submit='vm.submit()'
+  .row
+    .large-12.columns
+      label
+        | Name
+        input type='text' required='' ng-model='vm.name'
+  .row
+    .large-6.columns
+      label Eating Time?
+      input id='checkbox1' type='checkbox'
+        label for='checkbox1' Breakfast
+      input id='checkbox2' type='checkbox'
+        label for='checkbox2' Lunch
+      input id='checkbox3' type='checkbox'
+        label for='checkbox3' Dinner
+  .row
+    .large-6.columns
+      input type='submit' class='button' value='Add'

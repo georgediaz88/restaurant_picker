@@ -1,0 +1,30 @@
+class Routes extends Config('restaurantPicker')
+  constructor: ($stateProvider, $urlRouterProvider, $locationProvider) ->
+    $locationProvider.html5Mode(Modernizr.history)
+
+    $stateProvider
+      .state('home', {
+        url: '/'
+        templateUrl: 'home.html'
+        controller: 'homeController'
+        controllerAs: 'vm'
+        animation: {
+          enter: 'slide-in-left-fade',
+          leave: 'shrink-out',
+          speed: 1200
+        }
+      })
+      .state('new', {
+        url: '/restaurants/new'
+        templateUrl: 'restaurants/new.html'
+        controller: 'restaurantController'
+        controllerAs: 'vm'
+        animation: {
+          enter: 'slide-in-left-fade',
+          leave: 'shrink-out',
+          speed: 1200
+        }
+      })
+
+    # default fallback
+    # $urlRouterProvider.otherwise('/')

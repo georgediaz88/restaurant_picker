@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: restaurant_picker_development
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: retaurant_picker_test
