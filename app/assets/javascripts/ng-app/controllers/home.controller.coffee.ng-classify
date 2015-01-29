@@ -2,3 +2,8 @@ class Home extends Controller('restaurantPicker')
   constructor: (restaurants) ->
     vm = @
     vm.restaurants = restaurants
+
+    vm.draw = ->
+      selectedRestaurants = _.filter(vm.restaurants, 'selected')
+      winningRestaurant = _.sample(selectedRestaurants)
+      winningRestaurant.winner = true

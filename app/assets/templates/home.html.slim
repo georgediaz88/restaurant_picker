@@ -2,7 +2,11 @@
   .large-12.columns
     h2 Restaurant Listings
 
-.row
-  .large-12.columns
-    ul
-      li ng-repeat='restaurant in vm.restaurants' {{restaurant.name}}
+    div(ng-repeat='restaurant in vm.restaurants')
+      .panel.radius ng-click='restaurant.selected = restaurant.selected == true ? false : true' ng-class='{callout: restaurant.selected}'
+        h5
+          | {{restaurant.name}}
+          span ng-show='restaurant.winner' class='winner' WINNER!!!
+
+    .button ng-click='vm.draw()' Pick!
+

@@ -22,3 +22,8 @@
 .main-view-container{
   width: 100%;
 }
+
+.winner {
+  margin-left: 8px;
+  color: #999;
+}
