@@ -1,3 +1,4 @@
 class Home extends Controller('restaurantPicker')
-  constructor: ->
-    console.log 'homeController Fired >>>>>>'
+  constructor: (restaurants) ->
+    vm = @
+    vm.restaurants = restaurants

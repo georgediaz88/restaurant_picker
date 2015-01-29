@@ -1,16 +1,13 @@
 class Restaurant extends Controller('restaurantPicker')
-  constructor: ($http, $state) ->
+  constructor: ($http, $state, Restaurant) ->
     vm = @
+    vm.restaurant = new Restaurant()
 
     vm.submit = ->
-      # Create data object to POST
-      data =
-        restaurant:
-          name: vm.name
-
-      $http.post('/api/restaurants.json', data)
+      vm.formPromise = vm.restaurant.create()
         .then ->
-           $state.go('home')
+          $state.go('home')
         .catch ->
           console.log 'errored! Boo!'
+          # Do something with error
 

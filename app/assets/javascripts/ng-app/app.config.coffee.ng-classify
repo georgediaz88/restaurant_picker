@@ -8,6 +8,9 @@ class Routes extends Config('restaurantPicker')
         templateUrl: 'home.html'
         controller: 'homeController'
         controllerAs: 'vm'
+        resolve:
+          restaurants: (Restaurant) ->
+            Restaurant.query()
         animation: {
           enter: 'slide-in-left-fade',
           leave: 'shrink-out',

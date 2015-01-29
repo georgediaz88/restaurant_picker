@@ -1,16 +1,17 @@
+div(cg-busy='vm.formPromise')
 .row
   .large-12.colums
     h2 Add Restaurant
 
 form ng-submit='vm.submit()'
   .row
-    .large-12.columns
+    .large-6.columns
       label
         | Name
-        input type='text' required='' ng-model='vm.name'
+        input type='text' required='' ng-model='vm.restaurant.name'
   .row
     .large-6.columns
-      label Eating Time?
+      label Eating Times
       input id='checkbox1' type='checkbox'
         label for='checkbox1' Breakfast
       input id='checkbox2' type='checkbox'

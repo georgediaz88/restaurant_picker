@@ -8,6 +8,7 @@
 //= require ngFx/dist/ngFx.min
 //= require angular-busy/dist/angular-busy.min
 //= require angular-ui-router/release/angular-ui-router
+//= require angularjs-rails-resource/angularjs-rails-resource
 //= require angular-form-for/dist/form-for
 
 //= require angular-form-for/dist/form-for.default-templates

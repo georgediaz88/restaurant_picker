@@ -17,3 +17,8 @@
  *= require angular-form-for/dist/form-for.css
 
  */
+
+
+.main-view-container{
+  width: 100%;
+}
