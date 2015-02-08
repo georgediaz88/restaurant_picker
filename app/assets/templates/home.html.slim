@@ -2,11 +2,25 @@
   .large-12.columns
     h2 Restaurant Listings
 
-    div(ng-repeat='restaurant in vm.restaurants')
-      .panel.radius ng-click='restaurant.selected = restaurant.selected == true ? false : true' ng-class='{callout: restaurant.selected}'
+    .row
+      .small-4.large-4.columns
+        input type='text' placeholder='Search...' class='search-box' ng-model='searchText'
+      .small-8.large-8.columns
+        input id='checkbox1' type='checkbox'
+          label for='checkbox1' Breakfast
+        input id='checkbox2' type='checkbox'
+          label for='checkbox2' Lunch
+        input id='checkbox3' type='checkbox'
+          label for='checkbox3' Dinner
+
+    .listings
+      .panel.radius(ng-repeat='restaurant in vm.restaurants | filter: searchText' ng-click='restaurant.selected = restaurant.selected == true ? false : true' ng-class='{callout: restaurant.selected, winner: restaurant.winner}')
         h5
           | {{restaurant.name}}
-          span ng-show='restaurant.winner' class='winner' WINNER!!!
+          span ng-show='restaurant.winner' class='message' WINNER!!!
+          a.remove(ng-click='vm.remove(restaurant)')
+            i.fa.fa-times
 
     .button ng-click='vm.draw()' Pick!
+    .button ng-click='vm.reset()' Reset
 

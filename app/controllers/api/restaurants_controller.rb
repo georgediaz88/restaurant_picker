@@ -10,6 +10,10 @@ class Api::RestaurantsController < ApiController
     respond_with :api, restaurant
   end
 
+  def destroy
+    respond_with Restaurant.destroy(params[:id])
+  end
+
   private
 
   def restaurant_params

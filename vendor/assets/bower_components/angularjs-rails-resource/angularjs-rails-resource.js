@@ -1,6 +1,6 @@
 /**
  * A resource factory inspired by $resource from AngularJS
- * @version v1.2.1 - 2014-09-28
+ * @version v1.2.2 - 2015-02-07
  * @link https://github.com/FineLinePrototyping/angularjs-rails-resource.git
  * @author 
  */
@@ -580,11 +580,22 @@
 
                     if (angular.isObject(result)) {
                         angular.forEach(this.customSerializedAttributes, function (value, key) {
-                            if (angular.isFunction(value)) {
-                                value = value.call(data, data);
-                            }
+                            if (angular.isArray(result)) {
+                                angular.forEach(result, function (item, index) {
+                                    var itemValue = value;
+                                    if (angular.isFunction(value)) {
+                                        itemValue = itemValue.call(item, item);
+                                    }
 
-                            self.serializeAttribute(result, key, value);
+                                    self.serializeAttribute(item, key, itemValue);
+                                });
+                            } else {
+                                if (angular.isFunction(value)) {
+                                    value = value.call(data, data);
+                                }
+
+                                self.serializeAttribute(result, key, value);
+                            }
                         });
                     }
 
@@ -710,10 +721,10 @@
                 result[angular.isArray(data) ? resource.config.pluralName : resource.config.name] = data;
                 return result;
             },
-            unwrap: function (response, resource) {
+            unwrap: function (response, resource, isObject) {
                 if (response.data && response.data.hasOwnProperty(resource.config.name)) {
                     response.data = response.data[resource.config.name];
-                } else if (response.data && response.data.hasOwnProperty(resource.config.pluralName)) {
+                } else if (response.data && response.data.hasOwnProperty(resource.config.pluralName) && !isObject) {
                     response.data = response.data[resource.config.pluralName];
                 }
 
@@ -818,7 +829,7 @@
                     if (value) {
                         var response = this.constructor.deserialize({data: value});
                         if (this.constructor.config.rootWrapping) {
-                            response = railsRootWrapper.unwrap(response, this.constructor);
+                            response = railsRootWrapper.unwrap(response, this.constructor, true);
                         }
                         angular.extend(this, response.data);
                     }
@@ -1286,7 +1297,7 @@
 
                     if (config.rootWrapping) {
                         promise = promise.then(function (response) {
-                            return railsRootWrapper.unwrap(response, config.resourceConstructor);
+                            return railsRootWrapper.unwrap(response, config.resourceConstructor, false);
                         });
                     }
 

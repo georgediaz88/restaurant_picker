@@ -5,5 +5,6 @@ angular.module('restaurantPicker', [
   'formFor',
   'formFor.defaultTemplates',
   'cgBusy',
+  'ngAnimate',
   'rails'
 ])

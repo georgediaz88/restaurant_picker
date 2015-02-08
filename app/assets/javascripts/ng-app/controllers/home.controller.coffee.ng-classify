@@ -7,3 +7,16 @@ class Home extends Controller('restaurantPicker')
       selectedRestaurants = _.filter(vm.restaurants, 'selected')
       winningRestaurant = _.sample(selectedRestaurants)
       winningRestaurant.winner = true
+
+    vm.remove = (restaurant) ->
+      if confirm "Are you sure you wanna delete?"
+        restaurant.delete().then ->
+          index = vm.restaurants.indexOf(restaurant)
+          vm.restaurants.splice(index, 1)
+
+    vm.reset = ->
+      _.forEach vm.restaurants,
+        (restaurant) ->
+          restaurant.winner = false if restaurant.winner
+          restaurant.selected = false if restaurant.selected
+          true

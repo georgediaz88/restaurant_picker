@@ -1,0 +1,53 @@
+//= require_tree .
+//= require_self
+//= require foundation/css/foundation
+//= require angular-busy/dist/angular-busy
+//= require angular-form-for/dist/form-for
+//= require animate.css/animate
+//= require fontawesome/css/font-awesome
+
+.main-view-container{
+  width: 100%;
+}
+
+.winner {
+  -webkit-animation: pulse 0.5s;
+  -moz-animation: pulse 0.5s;
+  -o-animation: pulse 0.5s;
+  animation: pulse 0.5s;
+  .message {
+    margin-left: 8px;
+    color: #999;
+  }
+}
+
+.panel {
+  position: relative;
+  display: inline-block;
+  margin-right: 1em;
+  a {
+    &.remove {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+.listings {
+  .ng-enter, .ng-move{
+    -webkit-animation: fadeIn 0.5s;
+    -moz-animation: fadeIn 0.5s;
+    -o-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
+  }
+
+  .ng-leave{
+    -webkit-animation: fadeOut 0.5s;
+    -moz-animation: fadeOut 0.5s;
+    -o-animation: fadeOut 0.5s;
+    animation: fadeOut 0.5s;
+  }
+}

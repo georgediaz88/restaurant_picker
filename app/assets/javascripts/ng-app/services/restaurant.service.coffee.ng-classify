@@ -2,4 +2,4 @@ class Restaurant extends Factory('restaurantPicker')
   constructor: (RailsResource) ->
 
     return class Resource extends RailsResource
-      @configure url: '/api/restaurants.json', name: 'restaurant'
+      @configure url: '/api/restaurants', name: 'restaurant'

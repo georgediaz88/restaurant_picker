@@ -5,7 +5,6 @@ gem 'pg', '0.18.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'bower-rails', '~> 0.9.2'
 gem 'angular-rails-templates', '~> 0.1.3'
 gem 'rails_12factor', '~> 0.0.3', group: :production
 gem 'ng_classify', '~> 0.0.4'
