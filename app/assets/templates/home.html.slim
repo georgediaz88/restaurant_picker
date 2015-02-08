@@ -14,12 +14,11 @@
           label for='checkbox3' Dinner
 
     .listings
-      .panel.radius(ng-repeat='restaurant in vm.restaurants | filter: searchText' ng-click='restaurant.selected = restaurant.selected == true ? false : true' ng-class='{callout: restaurant.selected, winner: restaurant.winner}')
-        h5
-          | {{restaurant.name}}
-          span ng-show='restaurant.winner' class='message' WINNER!!!
-          a.remove(ng-click='vm.remove(restaurant)')
-            i.fa.fa-times
+      .panel.shadow.radius(ng-repeat='restaurant in vm.restaurants | filter: searchText' ng-click='restaurant.selected = restaurant.selected == true ? false : true' ng-class='{selected: restaurant.selected, winner: restaurant.winner}')
+        | {{restaurant.name}}
+        span ng-show='restaurant.winner' class='message' WINNER!!!
+        a.remove(ng-click='vm.remove(restaurant)')
+          i.fa.fa-times
 
     .button ng-click='vm.draw()' Pick!
     .button ng-click='vm.reset()' Reset

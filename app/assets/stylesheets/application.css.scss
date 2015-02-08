@@ -10,21 +10,30 @@
   width: 100%;
 }
 
-.winner {
-  -webkit-animation: pulse 0.5s;
-  -moz-animation: pulse 0.5s;
-  -o-animation: pulse 0.5s;
-  animation: pulse 0.5s;
-  .message {
-    margin-left: 8px;
-    color: #999;
-  }
+.shadow {
+  -webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
 }
 
 .panel {
   position: relative;
   display: inline-block;
   margin-right: 1em;
+  &.selected {
+    background-color: #ecfaff;
+  }
+  &.winner {
+    background-color: green !important;
+    color: #fff !important;
+    -webkit-animation: pulse 0.5s;
+    -moz-animation: pulse 0.5s;
+    -o-animation: pulse 0.5s;
+    animation: pulse 0.5s;
+    .message {
+      margin-left: 8px;
+    }
+  }
   a {
     &.remove {
       position: absolute;
