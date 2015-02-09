@@ -30,8 +30,4 @@ class Home extends Controller('restaurantPicker')
     vm.filterByCategory = (restaurant) ->
       optionSelected = _.includes(vm.mealTypes, true)
       return true unless optionSelected # viewable if no option selected
-      filterable = _.every vm.mealTypes, (val, key) ->
-        if val
-          restaurant.meals[key]
-        else
-          true
+      isFilterable = _.some vm.mealTypes, (val, key) -> restaurant.meals[key] == true if val
