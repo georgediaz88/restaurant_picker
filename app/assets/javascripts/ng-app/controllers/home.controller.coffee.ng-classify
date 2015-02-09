@@ -3,6 +3,12 @@ class Home extends Controller('restaurantPicker')
     vm = @
     vm.restaurants = restaurants
 
+    vm.mealTypes = {
+      breakfast: false,
+      lunch: false,
+      dinner: false
+    }
+
     vm.draw = ->
       selectedRestaurants = _.filter(vm.restaurants, 'selected')
       winningRestaurant = _.sample(selectedRestaurants)
@@ -19,4 +25,13 @@ class Home extends Controller('restaurantPicker')
         (restaurant) ->
           restaurant.winner = false if restaurant.winner
           restaurant.selected = false if restaurant.selected
+          true
+
+    vm.filterByCategory = (restaurant) ->
+      optionSelected = _.includes(vm.mealTypes, true)
+      return true unless optionSelected # viewable if no option selected
+      filterable = _.every vm.mealTypes, (val, key) ->
+        if val
+          restaurant.meals[key]
+        else
           true

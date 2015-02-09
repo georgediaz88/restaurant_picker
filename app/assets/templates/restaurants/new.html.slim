@@ -12,11 +12,11 @@ form ng-submit='vm.submit()'
   .row
     .large-6.columns
       label Eating Times
-      input id='checkbox1' type='checkbox'
+      input id='checkbox1' type='checkbox' ng-model='vm.restaurant.meals.breakfast'
         label for='checkbox1' Breakfast
-      input id='checkbox2' type='checkbox'
+      input id='checkbox2' type='checkbox' ng-model='vm.restaurant.meals.lunch'
         label for='checkbox2' Lunch
-      input id='checkbox3' type='checkbox'
+      input id='checkbox3' type='checkbox' ng-model='vm.restaurant.meals.dinner'
         label for='checkbox3' Dinner
   .row
     .large-6.columns
