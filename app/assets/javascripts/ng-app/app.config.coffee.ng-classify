@@ -28,6 +28,3 @@ class Routes extends Config('restaurantPicker')
           speed: 1200
         }
       })
-
-    # default fallback
-    # $urlRouterProvider.otherwise('/')

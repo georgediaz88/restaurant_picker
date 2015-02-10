@@ -1,5 +1,5 @@
 class Restaurant extends Controller('restaurantPicker')
-  constructor: ($http, $state, Restaurant) ->
+  constructor: ($state, Restaurant) ->
     vm = @
     vm.restaurant = new Restaurant()
 
