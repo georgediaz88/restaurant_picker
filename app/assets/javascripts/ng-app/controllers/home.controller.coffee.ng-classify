@@ -21,11 +21,11 @@ class Home extends Controller('restaurantPicker')
           vm.restaurants.splice(index, 1)
 
     vm.reset = ->
-      _.forEach vm.restaurants,
-        (restaurant) ->
-          restaurant.winner = false if restaurant.winner
-          restaurant.selected = false if restaurant.selected
-          true
+      selectedRestaurants = _.filter(vm.restaurants, (restaurant) -> restaurant.selected)
+      _.forEach selectedRestaurants, (restaurant) ->
+        restaurant.winner = false
+        restaurant.selected = false
+        return
 
     vm.filterByCategory = (restaurant) ->
       optionSelected = _.includes(vm.mealTypes, true)
