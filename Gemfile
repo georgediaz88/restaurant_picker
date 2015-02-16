@@ -14,9 +14,6 @@ gem 'responders'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-stack_explorer'
@@ -25,4 +22,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'awesome_print'
 end
+
+# Web server
+gem 'puma'
 
