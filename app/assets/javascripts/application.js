@@ -2,11 +2,11 @@
 //= require foundation/js/vendor/modernizr
 //= require foundation/js/foundation
 
-//= require lodash/lodash.min
+//= require lodash/lodash
 
 //= require angular/angular
-//= require ngFx/dist/ngFx.min
-//= require angular-busy/dist/angular-busy.min
+//= require ngFx/dist/ngFx
+//= require angular-busy/dist/angular-busy
 //= require angular-ui-router/release/angular-ui-router
 //= require angularjs-rails-resource/angularjs-rails-resource
 
