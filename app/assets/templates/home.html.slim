@@ -14,12 +14,13 @@
           label for='checkbox3' Dinner
 
     .listings
-      .panel.shadow.radius(ng-repeat="restaurant in vm.restaurants | filter: searchText | filter:vm.filterByCategory | orderBy: 'name'" ng-click='restaurant.selected = restaurant.selected == true ? false : true' ng-class='{selected: restaurant.selected, winner: restaurant.winner}')
+      .restaurant-section.shadow.radius(ng-repeat="restaurant in vm.restaurants | filter: searchText | filter:vm.filterByCategory | orderBy: 'name'" ng-click='restaurant.selected = restaurant.selected == true ? false : true' ng-class='{selected: restaurant.selected, winner: restaurant.winner}')
         | {{restaurant.name}}
         span ng-show='restaurant.winner' class='message' WINNER!!!
         a.remove(ng-click='vm.remove(restaurant); $event.stopPropagation()')
           i.fa.fa-times
-
-    .button ng-click='vm.draw()' Pick!
-    .button ng-click='vm.reset()' Reset
-
+    .row
+      .small-12.large-12.columns
+        .panel.clearfix
+          a.button.right(ng-click='vm.reset()') Reset
+          a.button.left(ng-click='vm.draw()') Pick!
