@@ -10,6 +10,7 @@ class Routes extends Config('restaurantPicker')
         controllerAs: 'vm'
         resolve:
           restaurants: (Restaurant) ->
+            console.log "restaurant resolve"
             Restaurant.query()
         animation: {
           enter: 'slide-in-left-fade',
