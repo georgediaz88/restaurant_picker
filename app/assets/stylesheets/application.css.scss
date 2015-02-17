@@ -1,8 +1,8 @@
 //= require foundation/css/foundation
 //= require angular-busy/dist/angular-busy
 //= require animate.css/animate
-//= require fontawesome/css/font-awesome
-//= require font-paths
+
+@import 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
 
 .main-view-container{
   width: 100%;
