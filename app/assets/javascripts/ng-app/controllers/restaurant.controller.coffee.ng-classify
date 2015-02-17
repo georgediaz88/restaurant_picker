@@ -3,8 +3,6 @@ class Restaurant extends Controller('restaurantPicker')
     vm = @
     vm.restaurant = new Restaurant()
 
-    window.state = $state
-
     vm.submit = ->
       vm.formPromise = vm.restaurant.create()
         .then ->
