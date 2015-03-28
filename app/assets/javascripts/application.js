@@ -5,6 +5,7 @@
 //= require lodash/lodash
 
 //= require angular/angular
+//= require ngFx/dist/ngFxBundle
 //= require ngFx/dist/ngFx
 //= require angular-busy/dist/angular-busy
 //= require angular-ui-router/release/angular-ui-router
