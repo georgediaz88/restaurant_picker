@@ -1,5 +1,5 @@
 class Home extends Controller('restaurantPicker')
-  constructor: (restaurants) ->
+  constructor: (restaurants, $location, $anchorScroll) ->
     vm = @
     vm.restaurants = restaurants
 
@@ -12,6 +12,8 @@ class Home extends Controller('restaurantPicker')
     vm.draw = ->
       selectedRestaurants = _.filter(vm.restaurants, 'selected')
       winningRestaurant = _.sample(selectedRestaurants)
+      $location.hash('restaurant-' + winningRestaurant.id);
+      $anchorScroll()
       winningRestaurant.winner = true
 
     vm.remove = (restaurant) ->
