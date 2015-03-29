@@ -14,16 +14,17 @@
     .large-12.medium-12.small-12.columns
       .restaurant.large-3.medium-4.small-6.columns.end.shadow(ng-repeat="restaurant in restaurants | filter: searchText | filter:filterByCategory | orderBy: 'name'" ng-click='restaurant.selected = restaurant.selected == true ? false : true' ng-class='{selected: restaurant.selected, winner: restaurant.winner}' id="{{'restaurant-' + restaurant.id}}")
         span ng-show='restaurant.winner' class='message' WINNER!!!
-        / a.remove(ng-click='remove(restaurant); $event.stopPropagation()')
-        /   i.fa.fa-times
+        a.remove(ng-click='remove(restaurant); $event.stopPropagation()')
+          i.fa.fa-times
         .image
           a class='th [radius]' href='#'
             img src='http://foundation.zurb.com/docs/assets/img/examples/space.jpg'
         .name
           | {{restaurant.name}}
         .city
-          i.fa.fa-map-marker.fa-fw.text-muted
-          | Chicago, IL
+          a href= "https://maps.google.com?q={{restaurant.name}}" target='_blank'
+            i.fa.fa-map-marker.fa-fw
+            | Map
         hr.separator
         i.fa.fa-coffee.fa-fw.text-muted(ng-show='servingBreakfast(restaurant)')
         i.fa.fa-cutlery.fa-fw.text-muted(ng-show='servingLunchOrDinner(restaurant)')
