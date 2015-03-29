@@ -1,0 +1,45 @@
+class RestaurantList extends Directive('restaurantPicker')
+    constructor: ($location, $anchorScroll) ->
+        return {
+            restrict: 'E'
+            templateUrl: 'restaurant_list.html'
+            link: (scope, elem, attrs) ->
+              scope.draw = ->
+                selectedRestaurants = _.filter(scope.restaurants, 'selected')
+                winningRestaurant = _.sample(selectedRestaurants)
+                $location.hash('restaurant-' + winningRestaurant.id);
+                $anchorScroll()
+                winningRestaurant.winner = true
+
+              scope.remove = (restaurant) ->
+                if confirm "Are you sure you wanna delete?"
+                  restaurant.delete().then ->
+                    index = scope.restaurants.indexOf(restaurant)
+                    scope.restaurants.splice(index, 1)
+
+              scope.reset = ->
+                selectedRestaurants = _.filter(scope.restaurants, (restaurant) -> restaurant.selected)
+                _.forEach selectedRestaurants, (restaurant) ->
+                  restaurant.winner = false
+                  restaurant.selected = false
+                  return
+
+              scope.servingBreakfast = (restaurant) ->
+                restaurant.meals['breakfast']
+
+              scope.servingLunchOrDinner = (restaurant) ->
+                restaurant.meals['lunch'] or restaurant.meals['dinner']
+
+              scope.filterByCategory = (restaurant) ->
+                optionSelected = _.includes(scope.mealTypes, true)
+                return true unless optionSelected # viewable if no option selected
+                isFilterable = _.some scope.mealTypes, (val, key) -> restaurant.meals[key] == true if val
+
+              init = do ->
+                scope.mealTypes = {
+                  breakfast: false,
+                  lunch: false,
+                  dinner: false
+                }
+            }
+

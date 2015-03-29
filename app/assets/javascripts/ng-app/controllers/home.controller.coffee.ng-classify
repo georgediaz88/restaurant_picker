@@ -1,35 +1,3 @@
 class Home extends Controller('restaurantPicker')
-  constructor: (restaurants, $location, $anchorScroll) ->
-    vm = @
-    vm.restaurants = restaurants
-
-    vm.mealTypes = {
-      breakfast: false,
-      lunch: false,
-      dinner: false
-    }
-
-    vm.draw = ->
-      selectedRestaurants = _.filter(vm.restaurants, 'selected')
-      winningRestaurant = _.sample(selectedRestaurants)
-      $location.hash('restaurant-' + winningRestaurant.id);
-      $anchorScroll()
-      winningRestaurant.winner = true
-
-    vm.remove = (restaurant) ->
-      if confirm "Are you sure you wanna delete?"
-        restaurant.delete().then ->
-          index = vm.restaurants.indexOf(restaurant)
-          vm.restaurants.splice(index, 1)
-
-    vm.reset = ->
-      selectedRestaurants = _.filter(vm.restaurants, (restaurant) -> restaurant.selected)
-      _.forEach selectedRestaurants, (restaurant) ->
-        restaurant.winner = false
-        restaurant.selected = false
-        return
-
-    vm.filterByCategory = (restaurant) ->
-      optionSelected = _.includes(vm.mealTypes, true)
-      return true unless optionSelected # viewable if no option selected
-      isFilterable = _.some vm.mealTypes, (val, key) -> restaurant.meals[key] == true if val
+  constructor: (restaurants, $scope) ->
+    $scope.restaurants = restaurants # resolved from server

@@ -2,38 +2,4 @@
   .large-12.medium-12.small-12.columns
     h2 Restaurant Listings
 
-.row
-  .medium-6.large-6.small-12.columns
-    input type='text' placeholder='Search...' class='search-box' ng-model='searchText'
-  .medium-4.large-4.small-12.columns.end
-    input id='checkbox1' type='checkbox' ng-model='vm.mealTypes.breakfast'
-      label for='checkbox1' Breakfast
-    input id='checkbox2' type='checkbox' ng-model='vm.mealTypes.lunch'
-      label for='checkbox2' Lunch
-    input id='checkbox3' type='checkbox' ng-model='vm.mealTypes.dinner'
-      label for='checkbox3' Dinner
-
-.restaurant-listings
-  .row
-    .large-12.medium-12.small-12.columns
-      .restaurant.large-3.medium-4.small-6.columns.end.shadow(ng-repeat="restaurant in vm.restaurants | filter: searchText | filter:vm.filterByCategory | orderBy: 'name'" ng-click='restaurant.selected = restaurant.selected == true ? false : true' ng-class='{selected: restaurant.selected, winner: restaurant.winner}' id="{{'restaurant-' + restaurant.id}}")
-        span ng-show='restaurant.winner' class='message' WINNER!!!
-        / a.remove(ng-click='vm.remove(restaurant); $event.stopPropagation()')
-        /   i.fa.fa-times
-        .image
-          a class='th [radius]' href='#'
-            img src='http://foundation.zurb.com/docs/assets/img/examples/space.jpg'
-        .name
-          | {{restaurant.name}}
-        .city
-          i.fa.fa-map-marker.fa-fw.text-muted
-          | Chicago, IL
-        hr.separator
-        i.fa.fa-coffee.fa-fw.text-muted
-        i.fa.fa-cutlery.fa-fw.text-muted
-
-.row
-  .small-12.large-12.columns
-    .panel.clearfix
-      a.button.right(ng-click='vm.reset()') Reset
-      a.button.left(ng-click='vm.draw()') Pick!
+restaurant-list

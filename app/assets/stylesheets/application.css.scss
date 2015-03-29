@@ -3,6 +3,14 @@
 @import 'animate.css/animate';
 @import 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
 
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
 html {
   font-size: 16px;
 }
@@ -18,9 +26,7 @@ body {
 }
 
 .shadow {
-  -webkit-box-shadow: 0 8px 6px -6px black;
-     -moz-box-shadow: 0 8px 6px -6px black;
-          box-shadow: 0 8px 6px -6px black;
+  @include vendor-prefix(box-shadow, 0 8px 6px -6px black);
 }
 
 .text-muted {
@@ -43,15 +49,12 @@ body {
     height: rem-calc(42);
   }
   &.selected {
-    background-color: #ecfaff;
+    background-color: #c3effd;
   }
   &.winner {
     background-color: green !important;
     color: #fff !important;
-    -webkit-animation: rubberBand 1s;
-    -moz-animation: rubberBand 1s;
-    -o-animation: rubberBand 1s;
-    animation: rubberBand 1s;
+    @include vendor-prefix(animation, rubberBand 1s);
     .message {
       position: absolute;
       top: 0;
@@ -72,17 +75,11 @@ body {
 
 .restaurant-listings {
   .ng-enter, .ng-move{
-    -webkit-animation: fadeIn 0.5s;
-    -moz-animation: fadeIn 0.5s;
-    -o-animation: fadeIn 0.5s;
-    animation: fadeIn 0.5s;
+    @include vendor-prefix(animation, fadeIn 0.5s);
   }
 
   .ng-leave{
-    -webkit-animation: fadeOut 0.5s;
-    -moz-animation: fadeOut 0.5s;
-    -o-animation: fadeOut 0.5s;
-    animation: fadeOut 0.5s;
+    @include vendor-prefix(animation, fadeOut 0.5s);
   }
 }
 

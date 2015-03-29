@@ -18,3 +18,4 @@
 //= require ./ng-app/app.config
 //= require_tree ./ng-app/services
 //= require_tree ./ng-app/controllers
+//= require_tree ./ng-app/directives
