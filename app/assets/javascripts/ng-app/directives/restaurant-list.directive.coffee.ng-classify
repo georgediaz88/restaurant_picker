@@ -11,7 +11,7 @@ class RestaurantList extends Directive('restaurantPicker')
                 $anchorScroll()
                 $timeout ->
                   winningRestaurant.winner = true
-                , 2000
+                , 1000
 
               scope.remove = (restaurant) ->
                 if confirm "Are you sure you wanna delete?"
