@@ -1,5 +1,5 @@
 class RestaurantList extends Directive('restaurantPicker')
-    constructor: ($location, $anchorScroll) ->
+    constructor: ($location, $anchorScroll, $timeout) ->
         return {
             restrict: 'E'
             templateUrl: 'restaurant_list.html'
@@ -9,7 +9,9 @@ class RestaurantList extends Directive('restaurantPicker')
                 winningRestaurant = _.sample(selectedRestaurants)
                 $location.hash('restaurant-' + winningRestaurant.id);
                 $anchorScroll()
-                winningRestaurant.winner = true
+                $timeout ->
+                  winningRestaurant.winner = true
+                , 2000
 
               scope.remove = (restaurant) ->
                 if confirm "Are you sure you wanna delete?"
