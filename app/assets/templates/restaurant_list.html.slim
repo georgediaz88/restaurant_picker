@@ -22,7 +22,7 @@
         .name
           | {{restaurant.name}}
         .map
-          a href= "https://www.google.com/maps/dir/Current+Location/{{restaurant.name}}" target='_blank'
+          a href= "https://www.google.com/maps/dir/Current+Location/{{restaurant.name}}" target='_blank' ng-click='$event.stopPropagation()'
             i.fa.fa-map-marker.fa-fw
             | Map
         hr.separator
